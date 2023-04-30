@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Author Show</title>
+</head>
+
+<body>
+    <div class="d-flex justify-content-around ">
+        
+        <div class="col-4 bg-dark text-light  my-5 p-4">
+            <!-- <h1 class="text-primary">All Authors</h1> -->
+            <h1 class="text-primary">{{author.name}}'s favorites</h1>
+            <table class="table table-hover">
+                <tr>
+                    <th>Title</th>
+                    <th># of pages</th>
+                    
+                </tr>
+                {%for book in books_list_author%}
+                
+                <tr>
+                    <td class="text-warning">{{book.title}}</td>
+                    <td class="text-warning">{{book.num_of_pages}}</td>
+                    
+                </tr>
+                {%endfor%}
+            </table>
+            
+        </div>
+
+        <form action="/favorites/authors" method="POST" class="col-4 bg-dark p-4 my-5 text-light">
+            <h1 class="text-center text-primary">Add Author's Favorite</h1>
+            <input type="hidden" name="authors_id" value={{author.id}}>
+            <div class="form-group">
+                <label for="books_id">Book:</label>
+                
+                <select id="books_id" name="books_id" class="form-control">
+                    {%for book in books%}
+                    <option value="{{book.id}}">{{book.title}}</option>
+                    {%endfor%}
+                  </select>
+            </div>
+            
+            <input type="submit" value="Add" class="btn btn-success">
+        </form>
+
+    </div>
+    <a href="/" class="text-center mx-auto">Home</a>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Books</title>
+</head>
+
+<body>
+    <div class="d-flex justify-content-around ">
+        
+        <form action="/books/create" method="POST" class="col-4 bg-dark p-4 my-5 text-light">
+            <h1 class="text-center text-primary">New Book</h1>
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" name="title" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="num_of_pages">Number of pages:</label>
+                <input type="number" name="num_of_pages" class="form-control">
+            </div>
+            <input type="submit" value="Create" class="btn btn-success">
+        </form>
+        
+        <div class="col-4 bg-dark text-light  my-5 p-4">
+            <h1 class="text-primary">All Books</h1>
+            <table class="table table-hover">
+
+                {%for book in books_list%}
+                <tr>
+                    <td><a href="/books/{{book.id}}" class="text-warning text-decoration-none">{{book.title}}</a></td>
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+        
+
+    </div>
+    <a href="/" class="text-center mx-auto">Home</a>
+</body>
+
+</html>
